@@ -1,0 +1,74 @@
+@import '../../assets/styles/variables';
+
+.root {
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  outline: none;
+  border: none;
+  padding: .5rem;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition-duration: .3s;
+  text-transform: uppercase;
+
+  &:hover {
+    border-color: lighten($Dark, 30%);
+  }
+
+  &:active {
+    border-color: darken($Primary, 30%);
+  }
+}
+
+.primary {
+  background: $Primary;
+
+  &:hover {
+    background: darken($Primary, 5%);
+  }
+
+  &:active {
+    background: darken($Primary, 20%);
+  }
+}
+
+.secondary {
+  background: $Secondary;
+
+  &:hover {
+    background: darken($Secondary, 5%);
+  }
+
+  &:active {
+    background: darken($Secondary, 20%);
+  }
+}
+
+.gradient {
+  background: $GradientHorizontal;
+
+  &:hover {
+    background: $GradientHorizontalDarken5;
+  }
+
+  &:active {
+    background: $GradientHorizontalDarken10;
+  }
+}
+
+.transparent {
+  background: $Dark;
+  border: 2px solid lighten($Dark, 20%);
+
+  &:hover {
+    border-color: lighten($Dark, 30%);
+  }
+
+  &:active {
+    border-color: darken($Primary, 30%);
+  }
+}

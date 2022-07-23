@@ -1,0 +1,41 @@
+@import '../../assets/styles/variables';
+
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  &:hover {
+    background: lighten($Dark, 4%);
+  }
+}
+
+.info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.username {
+  cursor: pointer;
+  font-family: $FontBold;
+  color: $Primary;
+  margin-right: 1rem;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.date {
+  font-family: $FontLight;
+  font-size: .8rem;
+  color: lighten($Dark, 20%);
+}
+
+.message {
+  font-family: $FontRegular;
+  word-wrap: break-word;
+  margin-top: .25rem;
+}

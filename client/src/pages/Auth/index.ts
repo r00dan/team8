@@ -1,0 +1,1 @@
+export { AuthContainer as Auth } from './AuthContainer';

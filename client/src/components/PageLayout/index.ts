@@ -1,0 +1,1 @@
+export { PageLayoutContainer as PageLayout } from './PageLayoutContainer';

@@ -1,0 +1,11 @@
+.root {
+  padding: 1rem;
+}
+
+.input {
+  margin-top: 1.25rem;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../assets/styles/variables';
+
+.root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: $FontBlack;
+  font-size: 3rem;
+  cursor: pointer;
+  background: $GradientVertical;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}

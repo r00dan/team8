@@ -1,0 +1,33 @@
+@import '../../../../assets/styles/variables';
+
+.root {
+  max-width: 70px;
+}
+
+.item {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: lighten($Dark, 5%);
+  font-size: 1.5rem;
+  font-family: $FontBlack;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid darken($Primary, 35%);
+  transition-duration: .4s;
+  cursor: pointer;
+  scroll-snap-align: start;
+
+  &:hover {
+    color: $Primary;
+    border-color: $Primary;
+  }
+}
+
+.name {
+  font-size: .9rem;
+  font-family: $FontLight;
+  text-align: center;
+  margin-top: 4px;
+}

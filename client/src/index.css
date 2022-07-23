@@ -1,15 +1,47 @@
 @import-normalize;
 
+@font-face {
+  font-family: RobotoLight;
+  src: url('./assets/fonts/Roboto-Light.ttf');
+}
+
+@font-face {
+  font-family: RobotoRegular;
+  src: url('./assets/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: RobotoBold;
+  src: url('./assets/fonts/Roboto-Bold.ttf');
+}
+
+@font-face {
+  font-family: RobotoBlack;
+  src: url('./assets/fonts/Roboto-Black.ttf');
+}
+
+* {
+  font-family: 'RobotoRegular';
+  color: #fff;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  min-height: 100%;
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #0f161a;
+  overflow: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }

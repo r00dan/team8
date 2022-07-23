@@ -1,0 +1,17 @@
+$FontLight: 'RobotoLight';
+$FontRegular: 'RobotoRegular';
+$FontBold: 'RobotoBold';
+$FontBlack: 'RobotoBlack';
+
+$White: #fff;
+$Black: #333;
+$Gray: #a1a1a1;
+$Primary: #8b2dfd;
+$Secondary: #22c2c3;
+$Dark: #0f161a;
+$Light: #eee;
+
+$GradientVertical: linear-gradient(0deg, $Secondary 0%, $Primary 100%);
+$GradientHorizontal: linear-gradient(90deg, $Primary 0%, $Secondary 100%);
+$GradientHorizontalDarken5: linear-gradient(90deg, darken($Primary, 5%) 0%, darken($Secondary, 5%) 100%);
+$GradientHorizontalDarken10: linear-gradient(90deg, darken($Primary, 10%) 0%, darken($Secondary, 10%) 100%);

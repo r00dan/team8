@@ -1,0 +1,9 @@
+@import '../../assets/styles/variables';
+
+.root {
+  width: 100%;
+  height: 100%;
+  padding: 1rem .5rem;
+  max-width: 300px;
+  background: lighten($Dark, 5%);
+}

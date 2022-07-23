@@ -1,22 +1,33 @@
+import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserController } from './presentation/user.controller';
-import { RoomController } from './presentation/room.controller';
-import { UserUseCase } from './domain/user.use-case';
-import { RoomUseCase } from './domain/room.use-case';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
-import * as model from './infrastructure/model';
+import { UserUseCase } from 'src/domain';
+import { UserResolver } from 'src/presentation';
+import * as model from 'src/infrastructure';
 
-const entities = [model.User, model.Room, model.Message];
+const entities = [
+  model.User,
+  model.PrivateRoom,
+  model.PublicRoom,
+  model.Message,
+];
 
-const controllers = [UserController, RoomController];
+const resolvers = [UserResolver];
 
-const domains = [UserUseCase, RoomUseCase];
+const domains = [UserUseCase];
 
-const providers = [...entities, ...controllers, ...domains];
+const providers = [...entities, ...resolvers, ...domains];
 
 @Module({
   imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database',
@@ -25,7 +36,6 @@ const providers = [...entities, ...controllers, ...domains];
     }),
     TypeOrmModule.forFeature(entities),
   ],
-  controllers,
   providers,
 })
 export class AppModule {}

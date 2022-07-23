@@ -1,0 +1,30 @@
+@import '../../assets/styles/variables';
+
+.root {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid lighten($Dark, 15%);
+  user-select: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:last-of-type {
+    border: none;
+  }
+
+  & > div {
+    margin-left: 1rem;
+  }
+
+  & > div:first-child > div {
+    font-family: $FontLight;
+  }
+}
+
