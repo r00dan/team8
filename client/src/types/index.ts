@@ -16,18 +16,18 @@ export type Scalars = {
 };
 
 export type CreateUserInput = {
-  color: Scalars['String'];
-  firstName: Scalars['String'];
-  icon: Scalars['String'];
-  id: Scalars['String'];
-  lastName: Scalars['String'];
-  password: Scalars['String'];
-  username: Scalars['String'];
+  readonly color: Scalars['String'];
+  readonly firstName: Scalars['String'];
+  readonly icon: Scalars['String'];
+  readonly id: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly password: Scalars['String'];
+  readonly username: Scalars['String'];
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
-  createUser: Array<User>;
+  readonly __typename?: 'Mutation';
+  readonly createUser: User;
 };
 
 
@@ -36,29 +36,29 @@ export type MutationCreateUserArgs = {
 };
 
 export type PrivateRoom = {
-  __typename?: 'PrivateRoom';
-  id: Scalars['String'];
-  name: Scalars['String'];
-  ownerId: Scalars['String'];
-  user: Array<User>;
+  readonly __typename?: 'PrivateRoom';
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly ownerId: Scalars['String'];
+  readonly user: ReadonlyArray<User>;
 };
 
 export type PublicRoom = {
-  __typename?: 'PublicRoom';
-  color?: Maybe<Scalars['String']>;
-  icon?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  name: Scalars['String'];
-  ownerId: Scalars['String'];
-  users: Array<User>;
+  readonly __typename?: 'PublicRoom';
+  readonly color?: Maybe<Scalars['String']>;
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly id: Scalars['String'];
+  readonly name: Scalars['String'];
+  readonly ownerId: Scalars['String'];
+  readonly users: ReadonlyArray<User>;
 };
 
 export type Query = {
-  __typename?: 'Query';
-  getUser: User;
-  getUserCompanions: Array<PrivateRoom>;
-  getUserPublicRooms: Array<PublicRoom>;
-  getUsers: Array<User>;
+  readonly __typename?: 'Query';
+  readonly getUser: User;
+  readonly getUserCompanions: ReadonlyArray<PrivateRoom>;
+  readonly getUserPublicRooms: ReadonlyArray<PublicRoom>;
+  readonly getUsers: ReadonlyArray<User>;
 };
 
 
@@ -77,16 +77,16 @@ export type QueryGetUserPublicRoomsArgs = {
 };
 
 export type User = {
-  __typename?: 'User';
-  color?: Maybe<Scalars['String']>;
-  firstName: Scalars['String'];
-  icon?: Maybe<Scalars['String']>;
-  id: Scalars['String'];
-  lastName: Scalars['String'];
-  password: Scalars['String'];
-  privateRooms: Array<PrivateRoom>;
-  publicRooms: Array<PublicRoom>;
-  username: Scalars['String'];
+  readonly __typename?: 'User';
+  readonly color?: Maybe<Scalars['String']>;
+  readonly firstName: Scalars['String'];
+  readonly icon?: Maybe<Scalars['String']>;
+  readonly id: Scalars['String'];
+  readonly lastName: Scalars['String'];
+  readonly password: Scalars['String'];
+  readonly privateRooms: ReadonlyArray<PrivateRoom>;
+  readonly publicRooms: ReadonlyArray<PublicRoom>;
+  readonly username: Scalars['String'];
 };
 
 export type CreateUserMutationVariables = Exact<{
@@ -94,10 +94,10 @@ export type CreateUserMutationVariables = Exact<{
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser: Array<{ __typename?: 'User', id: string, username: string, icon?: string | null, color?: string | null }> };
+export type CreateUserMutationData = { readonly __typename?: 'Mutation', readonly createUser: { readonly __typename?: 'User', readonly id: string, readonly username: string, readonly icon?: string | null, readonly color?: string | null } };
 
 
-export const CreateUserDocument = gql`
+export const CreateUserVariables = gql`
     mutation createUser($createUserInput: CreateUserInput!) {
   createUser(createUserInput: $createUserInput) {
     id
@@ -107,7 +107,7 @@ export const CreateUserDocument = gql`
   }
 }
     `;
-export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, CreateUserMutationVariables>;
+export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutationData, CreateUserMutationVariables>;
 
 /**
  * __useCreateUserMutation__
@@ -126,10 +126,10 @@ export type CreateUserMutationFn = Apollo.MutationFunction<CreateUserMutation, C
  *   },
  * });
  */
-export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserMutation, CreateUserMutationVariables>) {
+export function useCreateUserMutation(baseOptions?: Apollo.MutationHookOptions<CreateUserMutationData, CreateUserMutationVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useMutation<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, options);
+        return Apollo.useMutation<CreateUserMutationData, CreateUserMutationVariables>(CreateUserVariables, options);
       }
 export type CreateUserMutationHookResult = ReturnType<typeof useCreateUserMutation>;
-export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutation>;
-export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutation, CreateUserMutationVariables>;
+export type CreateUserMutationResult = Apollo.MutationResult<CreateUserMutationData>;
+export type CreateUserMutationOptions = Apollo.BaseMutationOptions<CreateUserMutationData, CreateUserMutationVariables>;

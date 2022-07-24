@@ -1,6 +1,7 @@
 import { ChangeEvent } from 'react';
 
 import { Button, ButtonThemes, Input, Select, SelectOption } from 'components';
+import { CreateUserMutationData } from 'types';
 
 import style from './SignUp.module.scss';
 
@@ -11,6 +12,8 @@ export interface ISignUpProps {
   password: string;
   color: string;
   icon: string;
+  createdUser?: CreateUserMutationData | null;
+  createUserLoading: boolean;
   options: SelectOption<string>[];
   handleFirstNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleLastNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
@@ -28,6 +31,8 @@ export function SignUp({
   password,
   color,
   icon,
+  createdUser,
+  createUserLoading,
   options,
   handleFirstNameChange,
   handleLastNameChange,
@@ -93,11 +98,14 @@ export function SignUp({
         </div>
         <div className={style.input}>
           <Button
-            value='Sign Up'
+            value={createUserLoading ? 'Loading...' : 'Sign Up'}
             theme={ButtonThemes.PRIMARY}
             onClick={handleSignUpClick}
           />
         </div>
+        {createdUser && (
+          <div style={{ color: createdUser.createUser.color! }}>User {createdUser.createUser.username} created with ID: {createdUser.createUser.id}</div>
+        )}
       </div>
     </div>
   );

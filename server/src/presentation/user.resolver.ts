@@ -28,7 +28,7 @@ export class UserResolver {
     return this.userUseCase.getUserCompanions(id);
   }
 
-  @Mutation(() => [User])
+  @Mutation(() => User)
   public async createUser(
     @Args('createUserInput') createUserInput: CreateUserInput,
   ) {

@@ -17,8 +17,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "introschema": "rover graph introspect http://localhost:4000/graphql > schema.graphql",
-    "types": "apollo codegen:generate --localSchemaFile=schema.graphql --target=typescript",
+    "introspect": "rover graph introspect http://localhost:4000/graphql > schema.graphql",
     "typegen": "graphql-codegen --config codegen.yml"
   },
   "eslintConfig": {

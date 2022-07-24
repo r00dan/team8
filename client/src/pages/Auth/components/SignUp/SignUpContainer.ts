@@ -1,11 +1,10 @@
 import { createElement, useState, ChangeEvent } from 'react';
 import { nanoid } from 'nanoid';
-import { useMutation } from '@apollo/client';
 
 import { SelectOption } from 'components';
+import { useCreateUserMutation } from 'types';
 
 import { SignUp } from './SignUp';
-import { CREATE_USER } from 'gql';
 
 const options: SelectOption<string>[] = [
   {
@@ -38,7 +37,7 @@ export function SignUpContainer() {
   const [color, setColor] = useState<string>('');
   const [icon, setIcon] = useState<string>('');
 
-  const [createUser, { data: createdUserData }] = useMutation(CREATE_USER);
+  const [createUserMutation, { data: createdUser, loading: createUserLoading }] = useCreateUserMutation();
 
   const handleFirstNameChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setFirstName(value);
@@ -65,16 +64,7 @@ export function SignUpContainer() {
   };
 
   const handleSignUpClick = () => {
-    console.log({
-      firstName,
-      lastName,
-      username,
-      password,
-      color,
-      icon,
-    });
-
-    createUser({
+    createUserMutation({
       variables: {
         createUserInput: {
           id: nanoid(),
@@ -87,10 +77,6 @@ export function SignUpContainer() {
         },
       },
     });
-
-    if (createdUserData) {
-      console.log(`User ${createdUserData.username} created!`)
-    }
   }
 
   return createElement(SignUp, {
@@ -101,6 +87,8 @@ export function SignUpContainer() {
     color,
     options,
     icon,
+    createUserLoading,
+    createdUser,
     handleFirstNameChange,
     handleLastNameChange,
     handleUsernameChange,

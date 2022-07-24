@@ -68,6 +68,7 @@ export class UserUseCase {
         password: hash,
       });
       await this.userRepository.save(user);
+      return user;
     }
   }
 }

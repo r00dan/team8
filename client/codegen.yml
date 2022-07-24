@@ -2,11 +2,15 @@ overwrite: true
 schema: "./schema.graphql"
 documents: "src/gql/*.graphql"
 generates:
-  src/generated/graphql.tsx:
+  src/types/index.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
       - "typescript-react-apollo"
+    config:
+      immutableTypes: true
+      documentVariableSuffix: "Variables"
+      operationResultSuffix: "Data"
   ./graphql.schema.json:
     plugins:
       - "introspection"
