@@ -1,4 +1,5 @@
 import { ChangeEvent, HTMLInputTypeAttribute } from 'react';
+import classNames from 'classnames';
 
 import style from './Input.module.scss';
 
@@ -19,6 +20,34 @@ export function Input({
   placeholder,
   onChange,
 }: IInputProps) {
+  if (type === 'color') {
+    return (
+      <div
+        className={style.root}
+      >
+        {label && (
+          <label
+            htmlFor={id}
+            className={style.label}
+          >
+            {label}
+          </label>
+        )}
+        <input
+          id={id}
+          className={classNames([
+            style.input,
+            style.color,
+          ])}
+          style={{ background: value }}
+          value={value}
+          type={type}
+          placeholder={placeholder ?? ''}
+          onChange={onChange}
+        />
+      </div>
+    )
+  }
   return (
     <div
       className={style.root}

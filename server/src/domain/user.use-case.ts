@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
 
 import * as model from 'src/infrastructure';
 import { CreateUserInput } from 'src/presentation/input';
@@ -48,18 +49,7 @@ export class UserUseCase {
       relations: ['privateRooms'],
     });
 
-    console.log(user);
-
     return user.privateRooms;
-
-    // const userRoomIds = user.rooms.map(({ id }) => id);
-
-    // return this.userRepository
-    //   .createQueryBuilder('user')
-    //   .leftJoin('user.rooms', 'room')
-    //   .where('room.id in (:...userRoomIds)', { userRoomIds })
-    //   .andWhere('user.id != :id', { id })
-    //   .getMany();
   }
 
   public async createUser(createUserInput: CreateUserInput) {
@@ -70,7 +60,13 @@ export class UserUseCase {
     });
 
     if (!candidate) {
-      const user = await this.userRepository.create(createUserInput);
+      const { password, ...input } = createUserInput;
+      const salt = await bcrypt.genSalt();
+      const hash = await bcrypt.hash(password, salt);
+      const user = await this.userRepository.create({
+        ...input,
+        password: hash,
+      });
       await this.userRepository.save(user);
     }
   }

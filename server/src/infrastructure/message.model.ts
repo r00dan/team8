@@ -1,7 +1,7 @@
 import { Entity, PrimaryColumn, Column, ManyToOne } from 'typeorm';
 import { Field, ObjectType } from '@nestjs/graphql';
 
-import { User } from './index';
+import { User, PrivateRoom, PublicRoom } from './index';
 
 @ObjectType()
 @Entity()
@@ -22,11 +22,21 @@ export class Message {
   @Column()
   data: string;
 
+  @Column({ nullable: true })
+  publicRoomId?: string;
+
+  @Column({ nullable: true })
+  privateRoomId?: string;
+
   @Field(() => User)
   @ManyToOne(() => User, (user) => user.id)
   author: User;
 
-  // @Field(() => Room)
-  // @ManyToOne(() => Room, (room) => room.id)
-  // room: Room;
+  @Field(() => PrivateRoom)
+  @ManyToOne(() => PrivateRoom, (room) => room.id)
+  privateRoom: PrivateRoom;
+
+  @Field(() => PublicRoom)
+  @ManyToOne(() => PublicRoom, (room) => room.id)
+  publicRoom: PublicRoom;
 }

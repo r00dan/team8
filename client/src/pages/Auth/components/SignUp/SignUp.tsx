@@ -1,6 +1,6 @@
-import classnames from 'classnames';
-import { Button, ButtonThemes, Input } from 'components';
 import { ChangeEvent } from 'react';
+
+import { Button, ButtonThemes, Input, Select, SelectOption } from 'components';
 
 import style from './SignUp.module.scss';
 
@@ -9,10 +9,15 @@ export interface ISignUpProps {
   lastName: string;
   username: string;
   password: string;
+  color: string;
+  icon: string;
+  options: SelectOption<string>[];
   handleFirstNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleLastNameChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleUsernameChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handlePasswordChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleColorChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  handleIconChange: (event: ChangeEvent<HTMLSelectElement>) => void;
   handleSignUpClick: () => void;
 }
 
@@ -21,10 +26,15 @@ export function SignUp({
   lastName,
   username,
   password,
+  color,
+  icon,
+  options,
   handleFirstNameChange,
   handleLastNameChange,
   handleUsernameChange,
   handlePasswordChange,
+  handleColorChange,
+  handleIconChange,
   handleSignUpClick,
 }: ISignUpProps) {
   return (
@@ -34,18 +44,18 @@ export function SignUp({
       <div className={style.inputGroup}>
         <div className={style.input}>
           <Input
-            id='signup-firstName'
-            value={firstName}
-            label='First Name'
-            onChange={handleFirstNameChange}
+            id='signup-lastName'
+            value={lastName}
+            label='Last Name'
+            onChange={handleLastNameChange}
           />
         </div>
         <div className={style.input}>
           <Input
-            id='signup-username'
-            value={lastName}
-            label='Last Name'
-            onChange={handleLastNameChange}
+            id='signup-firstName'
+            value={firstName}
+            label='First Name'
+            onChange={handleFirstNameChange}
           />
         </div>
         <div className={style.input}>
@@ -65,10 +75,26 @@ export function SignUp({
             onChange={handlePasswordChange}
           />
         </div>
+        <div className={style.inputGroupHorizontal}>
+          <Select
+            id='sign-up-icon'
+            value={icon}
+            label='Icon'
+            options={options}
+            onChange={handleIconChange}
+          />
+          <Input
+            id='signup-color'
+            value={color}
+            label='Color'
+            type="color"
+            onChange={handleColorChange}
+          />
+        </div>
         <div className={style.input}>
           <Button
             value='Sign Up'
-            theme={ButtonThemes.GRADIENT}
+            theme={ButtonThemes.PRIMARY}
             onClick={handleSignUpClick}
           />
         </div>

@@ -23,6 +23,11 @@
 * {
   font-family: 'RobotoRegular';
   color: #fff;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 

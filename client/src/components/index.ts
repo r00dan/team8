@@ -7,3 +7,5 @@ export { Rooms } from './Rooms';
 export { Chat } from './Chat';
 export { Input } from './Input/Input';
 export { Message } from './Message/Message';
+export { Select } from './Select/Select';
+export type { SelectOption } from './Select/Select';

@@ -30,7 +30,7 @@ export function SignIn({}: ISignInProps) {
         <div className={style.input}>
           <Button
             value='Sign In'
-            theme={ButtonThemes.PRIMARY}
+            theme={ButtonThemes.SECONDARY}
             onClick={() => { }}
           />
         </div>

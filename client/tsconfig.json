@@ -25,6 +25,8 @@
       "pages": ["pages/"],
       "store": ["store/"],
       "api": ["api/"],
+      "types": ["generated/graphql.tsx"],
+      "gql": ["gql/index"],
     }
   },
   "include": [
